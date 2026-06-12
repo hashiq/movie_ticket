@@ -1,4 +1,4 @@
-movies = {
+vox_cinemas = {
     "shows" :{
     "Mollywood Times": {
         "details": {
@@ -460,5 +460,9 @@ movies = {
             "pepsi": 2,
             "water": 1
         },
-    }
+    },
+    "coupons": {
+    "WELCOME10": 10,
+    "FLAT 5%":5,
+    "ADCB":30, }
 }
