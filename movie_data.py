@@ -1,48 +1,38 @@
 vox_cinemas = {
-    "running": {
-        "Avengers": {
-            "show_time": "10:00 AM",
-            "language": "English",
-            "seats": {"Standard": 20, "Premium": 15, "VIP": 10}
-        },
-
-        "Karuppu": {
-            "show_time": "1:00 PM",
-            "language": "Tamil",
-            "seats": {"Standard": 25, "Premium": 18, "VIP": 12}
-        },
-
-        "Batman": {
-            "show_time": "4:00 PM",
-            "language": "English",
-            "seats": {"Standard": 30, "Premium": 20, "VIP": 10}
-        },
-
-        "Star Wars": {
-            "show_time": "7:00 PM",
-            "language": "English",
-            "seats": {"Standard": 35, "Premium": 25, "VIP": 15}
-        }
+    "Avengers": {
+        "show_time": "10:00 AM",
+        "seats": 10,
+        "price": 5,
+        "revenue": 0
     },
-
-    "food_beverage": {
-        "food": {
-            "Popcorn Small": {"price": 3, "stock": 100},
-            "Popcorn Medium": {"price": 5, "stock": 80},
-            "Popcorn Large": {"price": 7, "stock": 50},
-            "Nachos": {"price": 6, "stock": 40},
-            "Burger": {"price": 10, "stock": 25}
-        },
-
-        "drinks": {
-            "Water": {"price": 2, "stock": 200},
-            "Coca Cola": {"price": 4, "stock": 100},
-            "Pepsi": {"price": 4, "stock": 100},
-            "Sprite": {"price": 4, "stock": 100},
-            "Coffee": {"price": 6, "stock": 40}
-        }
+    "Batman": {
+        "show_time": "01:00 PM",
+        "seats": 8,
+        "price": 4,
+        "revenue": 0
+    },
+    "Spider-Man": {
+        "show_time": "04:00 PM",
+        "seats": 12,
+        "price": 6,
+        "revenue": 0
+    },
+    "John Wick": {
+        "show_time": "07:00 PM",
+        "seats": 15,
+        "price": 7,
+        "revenue": 0
     }
 }
 
-for key,values in vox_cinemas.items():
-    print(values)
+
+def seat(movie,seats):
+    for key, value in vox_cinemas:
+        if value["seats"] >= seats:
+            pass
+    return "watch the movie"
+
+
+movie =  input("enter movie name :")
+seats = int(input("enter no.of seats :"))
+seat(movie,seats)
