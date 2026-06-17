@@ -51,7 +51,7 @@ def check_seat(movie_chosen, seat_chosen):
     available_seats = vox_cinemas[movie]["seats"]
     if available_seats >= seat_chosen:
         pass
-    elif available_seats <= seat_chosen:
+    elif available_seats < seat_chosen:
         print("no seats available ")
         seat_status = False
     return seat_status
@@ -77,7 +77,6 @@ while watch_movie:
         print(f"Movie: {user_movie}")
         print(f"Tickets :{user_seats}")
         print(f"Total :{grand_total}")
-
 
 
 
