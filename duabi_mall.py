@@ -285,15 +285,15 @@ dubai_mall = [
     {"Brand": "Wendy's", "Category": "Food & Beverage", "Floor": "Second Floor"},
     {"Brand": "Zaatar W Zeit", "Category": "Food & Beverage", "Floor": "Lower Ground Floor"}]
 
-def find_store(user_input):
+def find_store(storeName):
     for values in dubai_mall:
-        print(values[user_input])
+        print(values["Brand"])
 
 
 
 print("========== DUBAI MALL ==========")
 
-print("1. Search Store\n"
+user_choice =  input("1. Search Store\n"
       "2. Search Category\n"
       "3. Search Floor\n"
       "4. Add Store\n"
@@ -301,12 +301,12 @@ print("1. Search Store\n"
       "6. Update Store\n"
       "7. Store Statistics\n"
       "8. Floor Statistics\n"
-"9. Category Statistics\n"
-"10. Generate Mall Report\n"
-      "11. Exit\n")
+      "9. Category Statistics\n"
+      "10. Generate Mall Report\n"
+      "11. Exit\n"
+        "Please choose your option:")
 
 
-
-
-
-
+if user_choice == "1":
+    store_name = input("enter store name :").title()
+    find_store(store_name)
