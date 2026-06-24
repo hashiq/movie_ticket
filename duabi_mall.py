@@ -2,7 +2,7 @@ dubai_mall = [
     {"Brand": "Apple",
      "Category": "Electronics",
      "Floor": "Ground Floor"},
-    # {"Brand": "Bang & Olufsen", "Category": "Electronics", "Floor": "First Floor"},
+    {"Brand": "Bang & Olufsen", "Category": "Electronics", "Floor": "First Floor"},
     # {"Brand": "Bose", "Category": "Electronics", "Floor": "Second Floor"},
     # {"Brand": "Canon", "Category": "Electronics", "Floor": "Second Floor"},
     # {"Brand": "Dirham 4U Electronics", "Category": "Electronics", "Floor": "Second Floor"},
@@ -296,9 +296,12 @@ def find_store(userChoice):
 
         if stores == userChoice:
             print(f"{userChoice} is in {store_floor} ")
-        elif store_category ==userChoice:
-            for i in dubai_mall:
-                print(i)
+        # elif store_category ==userChoice:
+        #     for categoryWise in dubai_mall[1]:
+        #         print(categoryWise)
+
+
+
 
 
 print("========== DUBAI MALL ==========")
