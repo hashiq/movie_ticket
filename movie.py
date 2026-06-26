@@ -29,12 +29,13 @@ def bookShow(movie,ticket):
             availableSeat =  value["Ticket"]["Seat"]
             cost = value["Ticket"]["Price"]
             if availableSeat >= ticket:
-               print(f"current seat{value["Ticket"]["Seat"]}")
-               print(f"reduce seat : {availableSeat-ticket}")
+               # print(f"current seat{value["Ticket"]["Seat"]}")
+               value["Ticket"]["Seat"] = availableSeat-ticket
+               # print(f"reduce seat : {availableSeat-ticket}")
                grandTotal = ticket * cost
                return grandTotal
 
 userChoiceMovie = input("enter a movie name: ").title()
 userChoiceTicket = int(input("ticket qty :"))
-print(bookShow(movie=userChoiceMovie,ticket=userChoiceTicket))
+print(f"Grand total : {bookShow(movie=userChoiceMovie,ticket=userChoiceTicket)}")
 print(vox_cinemas[userChoiceMovie])
