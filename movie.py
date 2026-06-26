@@ -35,7 +35,12 @@ def bookShow(movie,ticket):
                grandTotal = ticket * cost
                return grandTotal
 
-userChoiceMovie = input("enter a movie name: ").title()
-userChoiceTicket = int(input("ticket qty :"))
-print(f"Grand total : {bookShow(movie=userChoiceMovie,ticket=userChoiceTicket)}")
-print(vox_cinemas[userChoiceMovie])
+
+chocie = input(f"1:List all movie \n2:Book my tickets :")
+
+if chocie =="1":
+    print("")
+elif chocie =="2":
+    userChoiceMovie = input("enter a movie name: ").title()
+    userChoiceTicket = int(input("ticket :"))
+    print(f"Grand total : {bookShow(movie=userChoiceMovie, ticket=userChoiceTicket)}")
