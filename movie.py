@@ -52,22 +52,22 @@ def bookShow(movie,ticket):
         cost = value["Ticket"]["Price"]
         if key == movie:
            if availableSeat >= ticket:
-
                value["Ticket"]["Seat"] = availableSeat - ticket
                grand_total = ticket * cost
-               print(grand_total)
+               print(f"{movie} x {ticket}:$ {grand_total}")
            elif availableSeat <=ticket:
                print(f"there is only {availableSeat} seats , you request {ticket} seats ")
                status = False
     return status
+def allShow(user_):
+    if user_ == "1":
+        for key, value in vox_cinemas.items():
 
+    elif user_ =="3":
 
-def allShow():
-    for key , value in vox_cinemas.items():
-        print(key)
 
 while run_booking:
-    choice = input(f"1:List all movie \n2:Book a movie \nChoose your option:")
+    choice = input(f"1:List all movie \n2:Book a movie \n3:Report \nChoose your option:")
     if choice == "1":
         print("\n" * 2)
         print("*** All shows ***")
@@ -81,8 +81,12 @@ while run_booking:
         userChoiceTicket = int(input("ticket :"))
         booking_status = bookShow(movie=userChoiceMovie, ticket=userChoiceTicket)
         if booking_status == True:
-            BookingContinue = input("Do you want to continue").lower()
+            BookingContinue = input("Do you want to continue: ").lower()
             if BookingContinue == "no":
                 run_booking = False
+                print("Thank you Enjoy your movie")
         else:
             run_booking = booking_status
+    elif choice=="3"
+
+
