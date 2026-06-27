@@ -10,37 +10,72 @@ vox_cinemas = {
             "Seat": 120,
             "Price": 100
         },
-        "Revenue": {
-            "Today": 9000,
-            "Profit": 0
-        }
-    },
+        "Revenue": 0 },
     "Karuppu": {
         "Language": "Tamil",
         "Genre": "Drama",
         "Movie": {"Director": "Arun Kumar",
-                  "Cast": ["Surya","Indratrance"]},
+                  "Cast": ["Surya","R.j Balaji"]},
         "Ticket": {"Seat": 150,"Price": 120 },
-        "Revenue": {"Today": 15600,"Profit": 0} }}
+         "Revenue": 0 },
+    "Batman": {
+        "Language": "English",
+        "Genre": "Action",
+        "Movie": {"Director": "James Cameroon",
+                  "Cast": ["Ben flack"]},
+        "Ticket": {"Seat": 10, "Price": 120},
+         "Revenue": 0 },
+    "Superman": {
+        "Language": "English",
+        "Genre": "Action",
+        "Movie": {"Director": "James Cameroon","Cast": ["Henry Cavil"]},
+        "Ticket": {"Seat": 5, "Price": 300},
+         "Revenue": 0 },
+    "KGF": {
+        "Language": "Telung",
+        "Genre": "Action",
+        "Movie": {"Director": "Prashand Neel","Cast": ["Yash"]},
+        "Ticket": {"Seat": 2, "Price": 250},
+         "Revenue": 0 },
+    "F1": {
+        "Language": "English",
+        "Genre": "Sports",
+        "Movie": {"Director": "Micky wan","Cast": ["Brad Pitt"]},
+        "Ticket": {"Seat": 1, "Price": 150},
+         "Revenue": 0 },
+
+}
 
 def bookShow(movie,ticket):
     for key , value in vox_cinemas.items():
+        availableSeat =  value["Ticket"]["Seat"]
+        cost = value["Ticket"]["Price"]
         if key == movie:
-            availableSeat =  value["Ticket"]["Seat"]
-            cost = value["Ticket"]["Price"]
-            if availableSeat >= ticket:
-               # print(f"current seat{value["Ticket"]["Seat"]}")
-               value["Ticket"]["Seat"] = availableSeat-ticket
-               # print(f"reduce seat : {availableSeat-ticket}")
-               grandTotal = ticket * cost
-               return grandTotal
+           print("----------------")
+           if availableSeat >= ticket:
+               value["Ticket"]["Seat"] = availableSeat - ticket
+               grand_total = ticket * cost
+               print(grand_total)
+               print("--------1--------")
+           elif availableSeat <=ticket:
+               print(f"there is no {ticket}, we have {availableSeat} ")
+               print("--------2--------")
+
+def allShow():
+    for key , value in vox_cinemas.items():
+        print(key)
 
 
-chocie = input(f"1:List all movie \n2:Book my tickets :")
-
-if chocie =="1":
-    print("")
-elif chocie =="2":
+choice = input(f"1:List all movie \n2:Book a movie \nChoose your option:")
+if choice == "1":
+    print("\n"*2)
+    print("*** All shows ***")
+    allShow()
+elif choice == "2":
+    print("\n" * 2)
+    print("*** All shows ***")
+    allShow()
+    print("\n" * 1)
     userChoiceMovie = input("enter a movie name: ").title()
     userChoiceTicket = int(input("ticket :"))
-    print(f"Grand total : {bookShow(movie=userChoiceMovie, ticket=userChoiceTicket)}")
+    bookShow(movie=userChoiceMovie, ticket=userChoiceTicket)
