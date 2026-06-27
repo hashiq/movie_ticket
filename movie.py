@@ -1,3 +1,4 @@
+run_booking = True
 vox_cinemas = {
     "Athiradi": {
         "Language": "Malayalam",
@@ -31,7 +32,7 @@ vox_cinemas = {
         "Movie": {"Director": "James Cameroon","Cast": ["Henry Cavil"]},
         "Ticket": {"Seat": 5, "Price": 300},
          "Revenue": 0 },
-    "KGF": {
+    "Kgf": {
         "Language": "Telung",
         "Genre": "Action",
         "Movie": {"Director": "Prashand Neel","Cast": ["Yash"]},
@@ -42,40 +43,46 @@ vox_cinemas = {
         "Genre": "Sports",
         "Movie": {"Director": "Micky wan","Cast": ["Brad Pitt"]},
         "Ticket": {"Seat": 1, "Price": 150},
-         "Revenue": 0 },
-
-}
+         "Revenue": 0 },}
 
 def bookShow(movie,ticket):
     for key , value in vox_cinemas.items():
+        status = True
         availableSeat =  value["Ticket"]["Seat"]
         cost = value["Ticket"]["Price"]
         if key == movie:
-           print("----------------")
            if availableSeat >= ticket:
+
                value["Ticket"]["Seat"] = availableSeat - ticket
                grand_total = ticket * cost
                print(grand_total)
-               print("--------1--------")
            elif availableSeat <=ticket:
-               print(f"there is no {ticket}, we have {availableSeat} ")
-               print("--------2--------")
+               print(f"there is only {availableSeat} seats , you request {ticket} seats ")
+               status = False
+    return status
+
 
 def allShow():
     for key , value in vox_cinemas.items():
         print(key)
 
-
-choice = input(f"1:List all movie \n2:Book a movie \nChoose your option:")
-if choice == "1":
-    print("\n"*2)
-    print("*** All shows ***")
-    allShow()
-elif choice == "2":
-    print("\n" * 2)
-    print("*** All shows ***")
-    allShow()
-    print("\n" * 1)
-    userChoiceMovie = input("enter a movie name: ").title()
-    userChoiceTicket = int(input("ticket :"))
-    bookShow(movie=userChoiceMovie, ticket=userChoiceTicket)
+while run_booking:
+    choice = input(f"1:List all movie \n2:Book a movie \nChoose your option:")
+    if choice == "1":
+        print("\n" * 2)
+        print("*** All shows ***")
+        allShow()
+    elif choice == "2":
+        print("\n" * 2)
+        print("*** All shows ***")
+        allShow()
+        print("\n" * 1)
+        userChoiceMovie = input("enter a movie name:").title()
+        userChoiceTicket = int(input("ticket :"))
+        booking_status = bookShow(movie=userChoiceMovie, ticket=userChoiceTicket)
+        if booking_status == True:
+            BookingContinue = input("Do you want to continue").lower()
+            if BookingContinue == "no":
+                run_booking = False
+        else:
+            run_booking = booking_status
