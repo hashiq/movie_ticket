@@ -45,7 +45,6 @@ vox_cinemas = {
         "Ticket": {"Seat": 1, "Price": 150},
          "Revenue": 0 },}
 
-
 def bookShow(movie,ticket):
     status = True
     if vox_cinemas[] >= ticket:
