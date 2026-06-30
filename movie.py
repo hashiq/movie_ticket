@@ -1,4 +1,5 @@
 run_booking = True
+all_movie =[]
 vox_cinemas = {
     "Athiradi": {
         "Language": "Malayalam",
@@ -47,47 +48,51 @@ vox_cinemas = {
 
 def bookShow(movie,ticket):
     status = True
-    if vox_cinemas[] >= ticket:
-        value["Ticket"]["Seat"] -= ticket
-        grand_total = ticket * cost
-        value["Revenue"] += grand_total
+    if vox_cinemas[movie]["Ticket"]["Seat"] >= ticket:
+        vox_cinemas[movie]["Ticket"]["Seat"] -= ticket
+        grand_total = ticket * vox_cinemas[movie]["Ticket"]["Price"]
+        vox_cinemas[movie]["Revenue"] += grand_total
         print(f"{movie} x {ticket}:$ {grand_total}")
-    elif availableSeat <= ticket:
-        print(f"there is only {availableSeat} seats , you request {ticket} seats ")
+    elif vox_cinemas[movie]["Ticket"]["Seat"] < ticket:
+        print(f"there is only {vox_cinemas[movie]['Ticket']['Seat']} seats, you request {ticket} seats ")
         status = False
-
     return status
+
+all_movie=[]
+def movies_list():
+    for key, value in vox_cinemas.items():
+        if key in all_movie:
+            pass
+        else:
+            all_movie.append(key)
+            print(key)
+
 
 def allShow(user_):
     revenue_total=0
-    if user_ == "1":
-        for key, value in vox_cinemas.items():
-            print(key)
+    if user_  in ["1" , "2"]:
+       movies_list()
     elif user_ == "3":
         for key, value in vox_cinemas.items():
-            revenue_total += value['Revenue']
+            revenue_total += vox_cinemas[key]["Revenue"]
             print(f"Movie :{key}"
-                 f"\nprofit :{value['Revenue']}"
-                 # f"\nseats remain : {value['Ticket']['Seat']}"
+                 f"\nprofit :{vox_cinemas[key]['Revenue']}"
+                 f"\nseats remain : {vox_cinemas[key]['Ticket']['Seat']}"
                   f"")
         print(f"over all profit:{revenue_total}")
-        print("\n"*1)
-
 
 while run_booking:
-    all_movies = []
-    choice = input(f"1:List all movie \n2:Book a movie \n3:Report \nChoose your option:")
+    print("**main menu**")
+    choice = input(f"1:List all movie \n2:Book a movie \n3:Report \n4:end \nChoose your option:")
     if choice == "1":
-        print("\n" * 2)
         print("*** All shows ***")
         allShow(choice)
-    elif choice == "2":
-        print("\n" * 1)
 
-        for key, value in vox_cinemas.items():
-            all_movies.append(key)
+    elif choice == "2":
+        print("*** All shows ***")
+        allShow(choice)
         userChoiceMovie = input("enter a movie name:").title()
-        if userChoiceMovie  in all_movies:
+        if userChoiceMovie  in all_movie:
                 try:
                     userChoiceTicket = int(input("ticket :"))
                     if userChoiceTicket >= 1:
@@ -98,16 +103,17 @@ while run_booking:
                                 run_booking = False
                                 print("Thank you Enjoy your movie")
                     elif userChoiceTicket <= 0:
-                        print("\n" * 2)
                         print("You cant go ticket less than '1'")
                 except:
-                    print("You enter string not numbers for tickets ")
+                    print("except ValueError ")
         else:
             print("Movie Not founded, Lets restart again")
-            print("\n"*1)
     elif choice == "3":
          print("**reports**")
          allShow(choice)
+    elif choice == "4":
+         run_booking = False
+         print("***End***")
 
 
 
